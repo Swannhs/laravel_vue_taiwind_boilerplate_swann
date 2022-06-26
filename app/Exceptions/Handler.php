@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 class Handler extends ExceptionHandler
 {
@@ -37,5 +38,15 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $excepiton)
+    {
+        if ($excepiton instanceof TokenInvalidException) {
+            return response()->json([
+                'message' => 'Token is invalid',
+            ], 401);
+        }
+        return parent::render($request, $excepiton);
     }
 }
