@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
         $admin = User::find(1);
         $admin->assignRole(config('constants.roles.admin'));
 
-        $user = User::find(3);
+        $user = User::find(2);
         $user->assignRole(config('constants.roles.user'));
     }
 }

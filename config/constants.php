@@ -2,7 +2,7 @@
 return [
     'roles' => [
         'admin' => 'admin',
-        'user' => 'admin',
+        'user' => 'user',
     ],
     'permissions' => [
         'admin' => 'admin',
